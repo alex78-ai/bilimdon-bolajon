@@ -1,0 +1,755 @@
+<!DOCTYPE html>
+<html lang="uz">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Bilimdon Bolajon Bog'chasi — G'ijduvon</title>
+  <meta name="description" content="Bilimdon Bolajon bog'chasi — Buxoro viloyati, G'ijduvon tumani. 3-6 yoshli bolalar uchun zamonaviy ta'lim. Tel: +998 90-299-75-78" />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link href="https://fonts.googleapis.com/css2?family=Nunito:wght@400;500;600;700;800;900&family=Comfortaa:wght@400;600;700&display=swap" rel="stylesheet" />
+  <style>
+    :root {
+      --sun: #FFB800;
+      --sun-light: #FFF3CC;
+      --sun-dark: #CC8F00;
+      --leaf: #3BAD5E;
+      --leaf-light: #E6F7EC;
+      --leaf-dark: #1E7A3A;
+      --sky: #3B8FE8;
+      --sky-light: #EBF4FF;
+      --coral: #FF6B47;
+      --white: #FFFFFF;
+      --cream: #FFFDF5;
+      --text: #1A1A2E;
+      --text-muted: #6B6B8A;
+      --border: rgba(0,0,0,0.08);
+      --shadow: 0 4px 24px rgba(0,0,0,0.08);
+      --shadow-lg: 0 12px 48px rgba(0,0,0,0.14);
+      --radius: 20px;
+      --radius-sm: 12px;
+    }
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    html { scroll-behavior: smooth; }
+    body { font-family: 'Nunito', sans-serif; background: var(--cream); color: var(--text); overflow-x: hidden; }
+
+    /* ── NAV ── */
+    nav {
+      position: fixed; top: 0; left: 0; right: 0; z-index: 100;
+      background: rgba(255,253,245,0.92); backdrop-filter: blur(12px);
+      border-bottom: 1px solid var(--border);
+      display: flex; align-items: center; justify-content: space-between;
+      padding: 0 5%; height: 68px;
+    }
+    .logo { display: flex; align-items: center; gap: 10px; text-decoration: none; }
+    .logo-icon { width: 42px; height: 42px; background: var(--sun); border-radius: 12px; display: flex; align-items: center; justify-content: center; font-size: 22px; }
+    .logo-text { font-family: 'Comfortaa', sans-serif; font-weight: 700; font-size: 15px; color: var(--text); line-height: 1.2; }
+    .logo-text span { display: block; font-size: 11px; color: var(--text-muted); font-weight: 400; }
+    .nav-links { display: flex; gap: 28px; list-style: none; }
+    .nav-links a { text-decoration: none; color: var(--text-muted); font-size: 14px; font-weight: 600; transition: color .2s; }
+    .nav-links a:hover { color: var(--leaf); }
+    .nav-cta {
+      background: var(--leaf); color: white; border: none; border-radius: 50px;
+      padding: 10px 22px; font-size: 14px; font-weight: 700; cursor: pointer;
+      text-decoration: none; transition: background .2s, transform .1s;
+    }
+    .nav-cta:hover { background: var(--leaf-dark); transform: translateY(-1px); }
+    .hamburger { display: none; flex-direction: column; gap: 5px; cursor: pointer; padding: 4px; }
+    .hamburger span { width: 24px; height: 2.5px; background: var(--text); border-radius: 2px; transition: .3s; }
+
+    /* ── HERO ── */
+    .hero {
+      min-height: 100vh; padding-top: 68px;
+      display: flex; align-items: center;
+      background: linear-gradient(135deg, #FFFDF5 0%, #FFF8E1 40%, #E8F7EE 100%);
+      position: relative; overflow: hidden;
+    }
+    .hero::before {
+      content: ''; position: absolute; top: -80px; right: -80px;
+      width: 500px; height: 500px;
+      background: radial-gradient(circle, rgba(255,184,0,0.18) 0%, transparent 70%);
+      border-radius: 50%;
+    }
+    .hero::after {
+      content: ''; position: absolute; bottom: -100px; left: -100px;
+      width: 400px; height: 400px;
+      background: radial-gradient(circle, rgba(59,173,94,0.15) 0%, transparent 70%);
+      border-radius: 50%;
+    }
+    .hero-inner { max-width: 1100px; margin: 0 auto; padding: 60px 5%; display: grid; grid-template-columns: 1fr 1fr; gap: 60px; align-items: center; position: relative; z-index: 1; }
+    .hero-badge { display: inline-flex; align-items: center; gap: 8px; background: var(--sun-light); border: 1.5px solid var(--sun); color: var(--sun-dark); font-size: 13px; font-weight: 700; padding: 6px 14px; border-radius: 50px; margin-bottom: 20px; }
+    .hero h1 { font-family: 'Comfortaa', sans-serif; font-size: clamp(32px, 5vw, 52px); font-weight: 700; line-height: 1.15; margin-bottom: 18px; color: var(--text); }
+    .hero h1 em { font-style: normal; color: var(--leaf); }
+    .hero p { font-size: 17px; color: var(--text-muted); line-height: 1.7; margin-bottom: 32px; }
+    .hero-btns { display: flex; gap: 14px; flex-wrap: wrap; }
+    .btn-primary {
+      background: var(--leaf); color: white; border: none; border-radius: 50px;
+      padding: 15px 32px; font-size: 16px; font-weight: 800; cursor: pointer;
+      text-decoration: none; display: inline-block; transition: all .2s;
+      box-shadow: 0 4px 20px rgba(59,173,94,0.35);
+    }
+    .btn-primary:hover { background: var(--leaf-dark); transform: translateY(-2px); box-shadow: 0 8px 28px rgba(59,173,94,0.4); }
+    .btn-secondary {
+      background: white; color: var(--text); border: 2px solid var(--border);
+      border-radius: 50px; padding: 13px 28px; font-size: 16px; font-weight: 700;
+      cursor: pointer; text-decoration: none; display: inline-flex; align-items: center; gap: 8px; transition: all .2s;
+    }
+    .btn-secondary:hover { border-color: var(--leaf); color: var(--leaf); transform: translateY(-2px); }
+    .hero-stats { display: flex; gap: 28px; margin-top: 36px; }
+    .stat { text-align: center; }
+    .stat strong { display: block; font-size: 28px; font-weight: 900; color: var(--leaf); }
+    .stat span { font-size: 12px; color: var(--text-muted); font-weight: 600; }
+    .hero-visual { position: relative; }
+    .hero-card-main {
+      background: white; border-radius: 28px; padding: 32px;
+      box-shadow: var(--shadow-lg); position: relative;
+    }
+    .hero-emoji-grid { display: grid; grid-template-columns: repeat(4,1fr); gap: 12px; margin-bottom: 20px; }
+    .emoji-box {
+      aspect-ratio: 1; background: var(--sun-light); border-radius: 14px;
+      display: flex; align-items: center; justify-content: center; font-size: 28px;
+      transition: transform .2s;
+    }
+    .emoji-box:hover { transform: scale(1.1) rotate(5deg); }
+    .emoji-box:nth-child(2) { background: var(--leaf-light); }
+    .emoji-box:nth-child(3) { background: var(--sky-light); }
+    .emoji-box:nth-child(4) { background: #FFE8E2; }
+    .emoji-box:nth-child(5) { background: #F0E8FF; }
+    .emoji-box:nth-child(6) { background: var(--sun-light); }
+    .emoji-box:nth-child(7) { background: var(--leaf-light); }
+    .emoji-box:nth-child(8) { background: #FFE8E2; }
+    .time-badge {
+      background: var(--leaf); color: white; border-radius: 16px; padding: 14px 18px;
+      display: flex; align-items: center; gap: 12px;
+    }
+    .time-badge .t-icon { font-size: 28px; }
+    .time-badge .t-text strong { display: block; font-size: 15px; font-weight: 800; }
+    .time-badge .t-text span { font-size: 12px; opacity: 0.85; }
+    .floating-tag {
+      position: absolute; background: white; border-radius: 50px; padding: 8px 16px;
+      font-size: 13px; font-weight: 700; box-shadow: var(--shadow);
+      display: flex; align-items: center; gap: 6px;
+    }
+    .ft-1 { top: -20px; right: 20px; color: var(--coral); }
+    .ft-2 { bottom: -16px; left: -20px; color: var(--sky); }
+
+    /* ── SECTIONS ── */
+    section { padding: 80px 5%; }
+    .container { max-width: 1100px; margin: 0 auto; }
+    .section-header { text-align: center; margin-bottom: 52px; }
+    .section-label { display: inline-block; font-size: 12px; font-weight: 800; letter-spacing: .1em; text-transform: uppercase; color: var(--leaf); background: var(--leaf-light); padding: 5px 14px; border-radius: 50px; margin-bottom: 14px; }
+    .section-header h2 { font-family: 'Comfortaa', sans-serif; font-size: clamp(26px, 4vw, 40px); font-weight: 700; margin-bottom: 12px; }
+    .section-header p { font-size: 17px; color: var(--text-muted); max-width: 540px; margin: 0 auto; line-height: 1.6; }
+
+    /* ── GROUPS ── */
+    #guruhlar { background: white; }
+    .groups-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 28px; }
+    .group-card {
+      border-radius: var(--radius); overflow: hidden;
+      box-shadow: var(--shadow); transition: transform .3s, box-shadow .3s;
+    }
+    .group-card:hover { transform: translateY(-6px); box-shadow: var(--shadow-lg); }
+    .group-header { padding: 36px 32px 28px; }
+    .gc-1 .group-header { background: linear-gradient(135deg, #FFF8E1, #FFE89A); }
+    .gc-2 .group-header { background: linear-gradient(135deg, #E8F7EE, #A8E6C0); }
+    .group-age { font-size: 13px; font-weight: 800; padding: 5px 14px; border-radius: 50px; display: inline-block; margin-bottom: 14px; }
+    .gc-1 .group-age { background: var(--sun); color: white; }
+    .gc-2 .group-age { background: var(--leaf); color: white; }
+    .group-icon { font-size: 56px; margin-bottom: 12px; display: block; }
+    .group-header h3 { font-family: 'Comfortaa', sans-serif; font-size: 22px; font-weight: 700; margin-bottom: 6px; }
+    .group-header p { font-size: 14px; color: var(--text-muted); line-height: 1.5; }
+    .group-body { background: white; padding: 24px 32px; }
+    .group-features { list-style: none; display: flex; flex-direction: column; gap: 10px; }
+    .group-features li { display: flex; align-items: flex-start; gap: 10px; font-size: 14px; color: var(--text-muted); }
+    .group-features li::before { content: '✓'; font-weight: 900; color: var(--leaf); flex-shrink: 0; margin-top: 1px; }
+
+    /* ── FEATURES ── */
+    #afzalliklar { background: var(--cream); }
+    .features-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); gap: 20px; }
+    .feature-card {
+      background: white; border-radius: var(--radius); padding: 28px 24px;
+      box-shadow: var(--shadow); text-align: center;
+      transition: transform .3s;
+    }
+    .feature-card:hover { transform: translateY(-4px); }
+    .feature-icon { width: 68px; height: 68px; border-radius: 18px; margin: 0 auto 18px; display: flex; align-items: center; justify-content: center; font-size: 32px; }
+    .fi-1 { background: var(--sun-light); }
+    .fi-2 { background: var(--leaf-light); }
+    .fi-3 { background: var(--sky-light); }
+    .fi-4 { background: #FFE8E2; }
+    .feature-card h3 { font-size: 17px; font-weight: 800; margin-bottom: 8px; }
+    .feature-card p { font-size: 14px; color: var(--text-muted); line-height: 1.6; }
+
+    /* ── DAILY SCHEDULE ── */
+    #jadval { background: white; }
+    .schedule-wrap { display: grid; grid-template-columns: 1fr 1fr; gap: 40px; align-items: start; }
+    .schedule-list { display: flex; flex-direction: column; gap: 0; }
+    .schedule-item { display: flex; gap: 16px; padding: 16px 0; border-bottom: 1px dashed var(--border); }
+    .schedule-item:last-child { border-bottom: none; }
+    .sched-time { font-size: 13px; font-weight: 800; color: var(--leaf); min-width: 80px; padding-top: 2px; }
+    .sched-content h4 { font-size: 15px; font-weight: 700; margin-bottom: 2px; }
+    .sched-content p { font-size: 13px; color: var(--text-muted); }
+    .schedule-info { background: linear-gradient(135deg, var(--leaf-light), #d4f0df); border-radius: var(--radius); padding: 36px; }
+    .schedule-info h3 { font-family: 'Comfortaa', sans-serif; font-size: 22px; font-weight: 700; margin-bottom: 16px; }
+    .info-row { display: flex; align-items: center; gap: 12px; margin-bottom: 14px; }
+    .info-icon { font-size: 22px; }
+    .info-row p { font-size: 15px; line-height: 1.4; }
+    .info-row strong { display: block; font-weight: 800; }
+    .info-row span { font-size: 13px; color: var(--text-muted); }
+
+    /* ── TESTIMONIALS ── */
+    #izohlar { background: var(--cream); }
+    .reviews-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 20px; }
+    .review-card { background: white; border-radius: var(--radius); padding: 28px; box-shadow: var(--shadow); }
+    .review-stars { color: var(--sun); font-size: 18px; margin-bottom: 14px; }
+    .review-text { font-size: 15px; color: var(--text-muted); line-height: 1.7; margin-bottom: 20px; font-style: italic; }
+    .reviewer { display: flex; align-items: center; gap: 12px; }
+    .reviewer-avatar { width: 44px; height: 44px; border-radius: 50%; display: flex; align-items: center; justify-content: center; font-size: 18px; font-weight: 800; color: white; flex-shrink: 0; }
+    .ra-1 { background: var(--leaf); }
+    .ra-2 { background: var(--sky); }
+    .ra-3 { background: var(--coral); }
+    .reviewer-name { font-weight: 800; font-size: 14px; }
+    .reviewer-sub { font-size: 12px; color: var(--text-muted); }
+
+    /* ── CONTACT ── */
+    #boglanish { background: white; }
+    .contact-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 48px; align-items: start; }
+    .contact-info h3 { font-family: 'Comfortaa', sans-serif; font-size: 28px; font-weight: 700; margin-bottom: 8px; }
+    .contact-info > p { font-size: 16px; color: var(--text-muted); margin-bottom: 32px; line-height: 1.6; }
+    .contact-item { display: flex; align-items: flex-start; gap: 16px; margin-bottom: 24px; }
+    .ci-icon { width: 48px; height: 48px; border-radius: 14px; display: flex; align-items: center; justify-content: center; font-size: 22px; flex-shrink: 0; }
+    .ci-1 { background: var(--leaf-light); }
+    .ci-2 { background: var(--sun-light); }
+    .ci-3 { background: var(--sky-light); }
+    .ci-4 { background: #FFE8E2; }
+    .ci-text strong { display: block; font-size: 14px; font-weight: 800; margin-bottom: 2px; }
+    .ci-text a { color: var(--leaf); text-decoration: none; font-size: 15px; font-weight: 600; }
+    .ci-text p { color: var(--text-muted); font-size: 14px; }
+    .contact-form { background: var(--cream); border-radius: var(--radius); padding: 36px; }
+    .contact-form h3 { font-family: 'Comfortaa', sans-serif; font-size: 22px; font-weight: 700; margin-bottom: 24px; }
+    .form-group { margin-bottom: 16px; }
+    .form-group label { display: block; font-size: 13px; font-weight: 700; margin-bottom: 6px; color: var(--text); }
+    .form-group input, .form-group select, .form-group textarea {
+      width: 100%; padding: 12px 16px; border: 1.5px solid var(--border);
+      border-radius: var(--radius-sm); font-family: 'Nunito', sans-serif;
+      font-size: 15px; color: var(--text); background: white;
+      transition: border-color .2s; outline: none;
+    }
+    .form-group input:focus, .form-group select:focus, .form-group textarea:focus { border-color: var(--leaf); }
+    .form-group textarea { resize: vertical; min-height: 100px; }
+    .form-row { display: grid; grid-template-columns: 1fr 1fr; gap: 12px; }
+    .btn-submit {
+      width: 100%; background: var(--leaf); color: white; border: none;
+      border-radius: 50px; padding: 15px; font-family: 'Nunito', sans-serif;
+      font-size: 16px; font-weight: 800; cursor: pointer; transition: all .2s;
+      box-shadow: 0 4px 20px rgba(59,173,94,0.35);
+    }
+    .btn-submit:hover { background: var(--leaf-dark); transform: translateY(-2px); }
+    .success-msg { display: none; text-align: center; padding: 20px; color: var(--leaf); font-weight: 700; font-size: 16px; }
+
+    /* ── MAP ── */
+    #manzil { background: var(--cream); padding: 60px 5%; }
+    .map-wrap { max-width: 1100px; margin: 0 auto; }
+    .map-wrap h2 { font-family: 'Comfortaa', sans-serif; font-size: 30px; font-weight: 700; text-align: center; margin-bottom: 28px; }
+    .map-container { border-radius: var(--radius); overflow: hidden; box-shadow: var(--shadow-lg); height: 380px; background: var(--leaf-light); display: flex; align-items: center; justify-content: center; }
+    .map-placeholder { text-align: center; }
+    .map-placeholder .map-icon { font-size: 64px; margin-bottom: 16px; }
+    .map-placeholder p { font-size: 16px; color: var(--text-muted); margin-bottom: 16px; }
+    .map-placeholder a { color: var(--leaf); font-weight: 700; text-decoration: none; font-size: 15px; padding: 10px 24px; border: 2px solid var(--leaf); border-radius: 50px; display: inline-block; transition: all .2s; }
+    .map-placeholder a:hover { background: var(--leaf); color: white; }
+
+    /* ── FOOTER ── */
+    footer { background: var(--text); color: rgba(255,255,255,0.85); padding: 48px 5% 28px; }
+    .footer-inner { max-width: 1100px; margin: 0 auto; }
+    .footer-top { display: grid; grid-template-columns: 1.5fr 1fr 1fr; gap: 40px; margin-bottom: 36px; }
+    .footer-brand .logo-text { color: white; }
+    .footer-brand .logo-text span { color: rgba(255,255,255,0.5); }
+    .footer-brand p { font-size: 14px; line-height: 1.7; margin-top: 14px; color: rgba(255,255,255,0.6); }
+    .footer-col h4 { font-size: 14px; font-weight: 800; color: white; margin-bottom: 14px; }
+    .footer-col ul { list-style: none; display: flex; flex-direction: column; gap: 8px; }
+    .footer-col ul li a { color: rgba(255,255,255,0.6); text-decoration: none; font-size: 14px; transition: color .2s; }
+    .footer-col ul li a:hover { color: var(--sun); }
+    .footer-col ul li { color: rgba(255,255,255,0.6); font-size: 14px; }
+    .footer-bottom { border-top: 1px solid rgba(255,255,255,0.1); padding-top: 20px; display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 12px; }
+    .footer-bottom p { font-size: 13px; color: rgba(255,255,255,0.4); }
+
+    /* ── WHATSAPP FLOAT ── */
+    .wa-float {
+      position: fixed; bottom: 28px; right: 28px; z-index: 99;
+      width: 60px; height: 60px; background: #25D366; border-radius: 50%;
+      display: flex; align-items: center; justify-content: center;
+      box-shadow: 0 4px 20px rgba(37,211,102,0.5);
+      text-decoration: none; font-size: 30px;
+      animation: pulse 2.5s infinite;
+      transition: transform .2s;
+    }
+    .wa-float:hover { transform: scale(1.12); }
+    @keyframes pulse {
+      0%,100% { box-shadow: 0 4px 20px rgba(37,211,102,0.5); }
+      50% { box-shadow: 0 4px 36px rgba(37,211,102,0.75); }
+    }
+
+    /* ── MOBILE NAV ── */
+    .mobile-menu {
+      display: none; position: fixed; top: 68px; left: 0; right: 0; z-index: 99;
+      background: white; border-bottom: 1px solid var(--border);
+      flex-direction: column; padding: 20px 5%;
+    }
+    .mobile-menu.open { display: flex; }
+    .mobile-menu a { padding: 12px 0; font-size: 16px; font-weight: 700; color: var(--text); text-decoration: none; border-bottom: 1px solid var(--border); }
+    .mobile-menu a:last-child { border-bottom: none; }
+
+    /* ── ANIMATIONS ── */
+    .fade-up { opacity: 0; transform: translateY(30px); transition: opacity .6s, transform .6s; }
+    .fade-up.visible { opacity: 1; transform: translateY(0); }
+
+    /* ── RESPONSIVE ── */
+    @media (max-width: 900px) {
+      .hero-inner { grid-template-columns: 1fr; gap: 40px; }
+      .hero-visual { order: -1; }
+      .groups-grid { grid-template-columns: 1fr; }
+      .schedule-wrap { grid-template-columns: 1fr; }
+      .contact-grid { grid-template-columns: 1fr; }
+      .footer-top { grid-template-columns: 1fr 1fr; }
+    }
+    @media (max-width: 640px) {
+      nav .nav-links, nav .nav-cta { display: none; }
+      .hamburger { display: flex; }
+      .hero-stats { gap: 16px; }
+      .form-row { grid-template-columns: 1fr; }
+      .footer-top { grid-template-columns: 1fr; }
+      section { padding: 60px 5%; }
+    }
+  </style>
+</head>
+<body>
+
+<!-- NAV -->
+<nav>
+  <a href="#" class="logo">
+    <div class="logo-icon">🌟</div>
+    <div class="logo-text">Bilimdon Bolajon<span>Bog'chasi · G'ijduvon</span></div>
+  </a>
+  <ul class="nav-links">
+    <li><a href="#guruhlar">Guruhlar</a></li>
+    <li><a href="#afzalliklar">Afzalliklar</a></li>
+    <li><a href="#jadval">Jadval</a></li>
+    <li><a href="#izohlar">Izohlar</a></li>
+    <li><a href="#boglanish">Bog'lanish</a></li>
+  </ul>
+  <a href="tel:+998902997578" class="nav-cta">📞 Qo'ng'iroq</a>
+  <div class="hamburger" id="hamburger">
+    <span></span><span></span><span></span>
+  </div>
+</nav>
+
+<div class="mobile-menu" id="mobileMenu">
+  <a href="#guruhlar" onclick="closeMobile()">Guruhlar</a>
+  <a href="#afzalliklar" onclick="closeMobile()">Afzalliklar</a>
+  <a href="#jadval" onclick="closeMobile()">Kunlik jadval</a>
+  <a href="#izohlar" onclick="closeMobile()">Izohlar</a>
+  <a href="#boglanish" onclick="closeMobile()">Bog'lanish</a>
+  <a href="tel:+998902997578" style="color: var(--leaf)">📞 +998 90-299-75-78</a>
+</div>
+
+<!-- HERO -->
+<section class="hero" id="bosh">
+  <div class="hero-inner">
+    <div class="hero-content">
+      <div class="hero-badge">🏆 G'ijduvondagi eng yaxshi bog'chalardan biri</div>
+      <h1>Farzandingiz kelajagi <em>bu yerdan</em> boshlanadi</h1>
+      <p>Bilimdon Bolajon — bolalarni sevgi va bilim bilan tarbiyalaydigan, zamonaviy usullarda o'qitadigan bog'cha. 3 yoshdan 6 yoshgacha.</p>
+      <div class="hero-btns">
+        <a href="#boglanish" class="btn-primary">✏️ Ro'yxatdan o'ting</a>
+        <a href="tel:+998902997578" class="btn-secondary">📞 Qo'ng'iroq qiling</a>
+      </div>
+      <div class="hero-stats">
+        <div class="stat"><strong>2</strong><span>Yosh guruhi</span></div>
+        <div class="stat"><strong>08–17</strong><span>Ish vaqti</span></div>
+        <div class="stat"><strong>100%</strong><span>Xavfsiz muhit</span></div>
+      </div>
+    </div>
+    <div class="hero-visual">
+      <div class="hero-card-main">
+        <div class="hero-emoji-grid">
+          <div class="emoji-box">🎨</div>
+          <div class="emoji-box">📚</div>
+          <div class="emoji-box">🎵</div>
+          <div class="emoji-box">🏃</div>
+          <div class="emoji-box">🧩</div>
+          <div class="emoji-box">🌿</div>
+          <div class="emoji-box">✏️</div>
+          <div class="emoji-box">🎯</div>
+        </div>
+        <div class="time-badge">
+          <span class="t-icon">⏰</span>
+          <div class="t-text">
+            <strong>Du–Ju: 08:00 – 17:00</strong>
+            <span>Har kuni bolalaringizni kutamiz</span>
+          </div>
+        </div>
+        <div class="floating-tag ft-1">❤️ Mehribon tarbiyachilar</div>
+        <div class="floating-tag ft-2">🎓 Maktabga tayyorlaymiz</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- GURUHLAR -->
+<section id="guruhlar">
+  <div class="container">
+    <div class="section-header fade-up">
+      <span class="section-label">Yosh guruhlari</span>
+      <h2>Har bir bola uchun maxsus yondashuv</h2>
+      <p>Bolangiz yoshiga mos guruhda individual e'tibor va to'g'ri ta'lim oladi</p>
+    </div>
+    <div class="groups-grid">
+      <div class="group-card gc-1 fade-up">
+        <div class="group-header">
+          <span class="group-age">3 – 5 yosh</span>
+          <span class="group-icon">🧒</span>
+          <h3>O'yin orqali o'rganish</h3>
+          <p>Kichkintoylar o'yin va qiziqarli mashg'ulotlar orqali dunyo haqida bilib oladilar</p>
+        </div>
+        <div class="group-body">
+          <ul class="group-features">
+            <li>Rasm chizish va ijodiy faoliyatlar</li>
+            <li>Qo'shiq va raqs mashg'ulotlari</li>
+            <li>Alifbo va raqamlar bilan tanishuv</li>
+            <li>Jamoa o'yinlari va do'stlik tarbiyasi</li>
+            <li>Nutq rivojlantirish mashqlari</li>
+            <li>Tabiat va atrofdagi dunyo haqida bilim</li>
+          </ul>
+        </div>
+      </div>
+      <div class="group-card gc-2 fade-up">
+        <div class="group-header">
+          <span class="group-age">5 – 6 yosh</span>
+          <span class="group-icon">📖</span>
+          <h3>Maktabga tayyorlash</h3>
+          <p>1-sinfga to'liq tayyor, bilimli va ishonchli borib kirsin deb maxsus dastur</p>
+        </div>
+        <div class="group-body">
+          <ul class="group-features">
+            <li>O'qish va yozishga tayyorlov</li>
+            <li>Matematika asoslari (1–100 gacha)</li>
+            <li>O'zbek tili va nutq rivojlantirish</li>
+            <li>Mantiqiy fikrlash mashqlari</li>
+            <li>Qo'l motorikasi va yozuv tayyorgarligi</li>
+            <li>Intizom va o'quv ko'nikmalari</li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- AFZALLIKLAR -->
+<section id="afzalliklar">
+  <div class="container">
+    <div class="section-header fade-up">
+      <span class="section-label">Nima uchun biz?</span>
+      <h2>Bizning afzalliklarimiz</h2>
+      <p>Bilimdon Bolajon — farzandingizga eng yaxshisini berishga tayyor</p>
+    </div>
+    <div class="features-grid">
+      <div class="feature-card fade-up">
+        <div class="feature-icon fi-1">👩‍🏫</div>
+        <h3>Malakali tarbiyachilar</h3>
+        <p>Bolalarni sevadigan, tajribali va mehribon tarbiyachilar jamoasi</p>
+      </div>
+      <div class="feature-card fade-up">
+        <div class="feature-icon fi-2">🌱</div>
+        <h3>Zamonaviy dastur</h3>
+        <p>O'yin asosida rivojlantiruvchi, ilg'or pedagogik usullar qo'llaniladi</p>
+      </div>
+      <div class="feature-card fade-up">
+        <div class="feature-icon fi-3">🔒</div>
+        <h3>Xavfsiz muhit</h3>
+        <p>Bolalar uchun qulay, toza va xavfsiz makon. Ota-onalar xotirjam bo'lishi uchun</p>
+      </div>
+      <div class="feature-card fade-up">
+        <div class="feature-icon fi-4">⏰</div>
+        <h3>Qulay ish vaqti</h3>
+        <p>Dushanba–Juma, soat 08:00 dan 17:00 gacha. Ishlaydigan ota-onalar uchun qulay</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- KUNLIK JADVAL -->
+<section id="jadval">
+  <div class="container">
+    <div class="section-header fade-up">
+      <span class="section-label">Kunlik hayot</span>
+      <h2>Bolangizning kundalik kuni</h2>
+      <p>Har bir kun rejalashtirilgan va foydali mashg'ulotlar bilan to'la</p>
+    </div>
+    <div class="schedule-wrap">
+      <div class="schedule-list fade-up">
+        <div class="schedule-item">
+          <div class="sched-time">08:00</div>
+          <div class="sched-content"><h4>Qabul qilish</h4><p>Bolalarni qabul qilish, ertalabki salomlashish</p></div>
+        </div>
+        <div class="schedule-item">
+          <div class="sched-time">08:30</div>
+          <div class="sched-content"><h4>Badantarbiya</h4><p>Ertalabki mashqlar va yengillik harakatlari</p></div>
+        </div>
+        <div class="schedule-item">
+          <div class="sched-time">09:00</div>
+          <div class="sched-content"><h4>Nonushta</h4><p>Sog'lom va to'yimli ertalabki ovqat</p></div>
+        </div>
+        <div class="schedule-item">
+          <div class="sched-time">09:30</div>
+          <div class="sched-content"><h4>Ta'lim mashg'ulotlari</h4><p>Asosiy darslar: til, matematik, ijodiy faoliyat</p></div>
+        </div>
+        <div class="schedule-item">
+          <div class="sched-time">11:30</div>
+          <div class="sched-content"><h4>Sayr va o'yin</h4><p>Havoda o'yin, erkin faoliyat</p></div>
+        </div>
+        <div class="schedule-item">
+          <div class="sched-time">12:30</div>
+          <div class="sched-content"><h4>Tushlik</h4><p>To'yimli tushlik va qisqa dam olish</p></div>
+        </div>
+        <div class="schedule-item">
+          <div class="sched-time">13:30</div>
+          <div class="sched-content"><h4>Kunduzgi uyqu</h4><p>Kichkintoylar uchun qisqa uyqu vaqti</p></div>
+        </div>
+        <div class="schedule-item">
+          <div class="sched-time">15:00</div>
+          <div class="sched-content"><h4>Peshin choy</h4><p>Yengil taom va meva</p></div>
+        </div>
+        <div class="schedule-item">
+          <div class="sched-time">15:30</div>
+          <div class="sched-content"><h4>Erkin faoliyat</h4><p>Ijod, o'yin, kitob o'qish</p></div>
+        </div>
+        <div class="schedule-item">
+          <div class="sched-time">17:00</div>
+          <div class="sched-content"><h4>Uy topshiriqlar</h4><p>Ota-onalar bilan uchrashish va kuzatib ketish</p></div>
+        </div>
+      </div>
+      <div class="schedule-info fade-up">
+        <h3>Bog'chamiz haqida</h3>
+        <div class="info-row">
+          <span class="info-icon">📍</span>
+          <p><strong>Manzil</strong><span>Buxoro viloyati, G'ijduvon tumani, Todon qishlog'i, 311S</span></p>
+        </div>
+        <div class="info-row">
+          <span class="info-icon">📞</span>
+          <p><strong>Telefon</strong><span><a href="tel:+998902997578" style="color:var(--leaf-dark)">+998 90-299-75-78</a></span></p>
+        </div>
+        <div class="info-row">
+          <span class="info-icon">📧</span>
+          <p><strong>Email</strong><span><a href="mailto:bilimdonbolajonuz@gmail.com" style="color:var(--leaf-dark)">bilimdonbolajonuz@gmail.com</a></span></p>
+        </div>
+        <div class="info-row">
+          <span class="info-icon">🕐</span>
+          <p><strong>Ish vaqti</strong><span>Dushanba – Juma: 08:00 – 17:00</span></p>
+        </div>
+        <div style="margin-top:24px">
+          <a href="#boglanish" class="btn-primary" style="display:block; text-align:center;">Ro'yxatdan o'ting →</a>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- IZOHLAR -->
+<section id="izohlar">
+  <div class="container">
+    <div class="section-header fade-up">
+      <span class="section-label">Ota-onalar fikri</span>
+      <h2>Bolalarimiz uchun minnatdormiz</h2>
+      <p>Ota-onalarimiz nimalar deyishadi</p>
+    </div>
+    <div class="reviews-grid">
+      <div class="review-card fade-up">
+        <div class="review-stars">★★★★★</div>
+        <p class="review-text">"O'g'lim bu bog'chaga borishni juda yaxshi ko'radi. Tarbiyachilar mehribon, mashg'ulotlar qiziqarli. Bir yil ichida juda ko'p o'sdi!"</p>
+        <div class="reviewer">
+          <div class="reviewer-avatar ra-1">M</div>
+          <div>
+            <div class="reviewer-name">Malika Yusupova</div>
+            <div class="reviewer-sub">O'g'li 4 yoshda o'qiydi</div>
+          </div>
+        </div>
+      </div>
+      <div class="review-card fade-up">
+        <div class="review-stars">★★★★★</div>
+        <p class="review-text">"Qizim maktabga a'lo tayyorlandi. 1-sinfga borib kirgan kuni o'qituvchi uning bilim darajasidan hayron qoldi. Rahmat Bilimdon Bolajon!"</p>
+        <div class="reviewer">
+          <div class="reviewer-avatar ra-2">S</div>
+          <div>
+            <div class="reviewer-name">Sardor Toshmatov</div>
+            <div class="reviewer-sub">Qizi maktabga o'tdi</div>
+          </div>
+        </div>
+      </div>
+      <div class="review-card fade-up">
+        <div class="review-stars">★★★★★</div>
+        <p class="review-text">"Ish vaqti juda qulay — 08dan 17gacha. Xavfsiz muhit, toza joy. Farzandimni ishonch bilan topshiramiz. Zo'r bog'cha!"</p>
+        <div class="reviewer">
+          <div class="reviewer-avatar ra-3">Z</div>
+          <div>
+            <div class="reviewer-name">Zulfiya Normatova</div>
+            <div class="reviewer-sub">Ikki farzandi bir guruhda</div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- BOG'LANISH -->
+<section id="boglanish">
+  <div class="container">
+    <div class="contact-grid">
+      <div class="contact-info fade-up">
+        <h3>Bog'lanish</h3>
+        <p>Savolingiz bormi yoki farzandingizni ro'yxatdan o'tkazmoqchimisiz? Biz bilan bog'laning!</p>
+        <div class="contact-item">
+          <div class="ci-icon ci-1">📍</div>
+          <div class="ci-text">
+            <strong>Manzil</strong>
+            <p>Buxoro viloyati, G'ijduvon tumani,<br>Todon qishlog'i, 311S</p>
+          </div>
+        </div>
+        <div class="contact-item">
+          <div class="ci-icon ci-2">📞</div>
+          <div class="ci-text">
+            <strong>Telefon</strong>
+            <a href="tel:+998902997578">+998 90-299-75-78</a>
+          </div>
+        </div>
+        <div class="contact-item">
+          <div class="ci-icon ci-3">📧</div>
+          <div class="ci-text">
+            <strong>Email</strong>
+            <a href="mailto:bilimdonbolajonuz@gmail.com">bilimdonbolajonuz@gmail.com</a>
+          </div>
+        </div>
+        <div class="contact-item">
+          <div class="ci-icon ci-4">⏰</div>
+          <div class="ci-text">
+            <strong>Ish vaqti</strong>
+            <p>Dushanba – Juma: 08:00 – 17:00</p>
+          </div>
+        </div>
+        <div style="margin-top:12px; display:flex; gap:12px; flex-wrap:wrap;">
+          <a href="https://wa.me/998902997578" target="_blank" class="btn-primary" style="background:#25D366; box-shadow: 0 4px 20px rgba(37,211,102,0.35);">💬 WhatsApp</a>
+          <a href="tel:+998902997578" class="btn-secondary">📞 Qo'ng'iroq</a>
+        </div>
+      </div>
+      <div class="contact-form fade-up">
+        <h3>Ariza yuborish</h3>
+        <form id="contactForm" onsubmit="submitForm(event)">
+          <div class="form-row">
+            <div class="form-group">
+              <label>Ism-familiyangiz *</label>
+              <input type="text" placeholder="Masalan: Aziz Karimov" required />
+            </div>
+            <div class="form-group">
+              <label>Telefon raqam *</label>
+              <input type="tel" placeholder="+998 90 000 00 00" required />
+            </div>
+          </div>
+          <div class="form-group">
+            <label>Bolangiz yoshi *</label>
+            <select required>
+              <option value="">Tanlang...</option>
+              <option>3 yosh (3–5 yosh guruhi)</option>
+              <option>4 yosh (3–5 yosh guruhi)</option>
+              <option>5 yosh (5–6 yosh guruhi)</option>
+              <option>6 yosh (5–6 yosh guruhi)</option>
+            </select>
+          </div>
+          <div class="form-group">
+            <label>Xabar (ixtiyoriy)</label>
+            <textarea placeholder="Savollaringizni yozing..."></textarea>
+          </div>
+          <button type="submit" class="btn-submit">✉️ Ariza yuborish</button>
+          <div class="success-msg" id="successMsg">✅ Arizangiz qabul qilindi! Tez orada siz bilan bog'lanamiz.</div>
+        </form>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- MANZIL -->
+<div id="manzil">
+  <div class="map-wrap">
+    <h2>📍 Biz qayerdamiz</h2>
+    <div class="map-container">
+      <div class="map-placeholder">
+        <div class="map-icon">🗺️</div>
+        <p>Buxoro viloyati, G'ijduvon tumani, Todon qishlog'i, 311S</p>
+        <a href="https://maps.google.com/?q=Gijduvon+Bukhara+Uzbekistan" target="_blank">Google Xaritada ko'rish →</a>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- FOOTER -->
+<footer>
+  <div class="footer-inner">
+    <div class="footer-top">
+      <div class="footer-brand">
+        <div class="logo">
+          <div class="logo-icon">🌟</div>
+          <div class="logo-text">Bilimdon Bolajon<span>Bog'chasi</span></div>
+        </div>
+        <p>Farzandingizning eng yaxshi kelajagi uchun — sevgi, bilim va mehnat bilan ishlaydi. G'ijduvon, Buxoro viloyati.</p>
+      </div>
+      <div class="footer-col">
+        <h4>Sahifalar</h4>
+        <ul>
+          <li><a href="#guruhlar">Guruhlar</a></li>
+          <li><a href="#afzalliklar">Afzalliklar</a></li>
+          <li><a href="#jadval">Kunlik jadval</a></li>
+          <li><a href="#izohlar">Ota-onalar izohi</a></li>
+          <li><a href="#boglanish">Bog'lanish</a></li>
+        </ul>
+      </div>
+      <div class="footer-col">
+        <h4>Aloqa</h4>
+        <ul>
+          <li><a href="tel:+998902997578">+998 90-299-75-78</a></li>
+          <li><a href="mailto:bilimdonbolajonuz@gmail.com">bilimdonbolajonuz@gmail.com</a></li>
+          <li>G'ijduvon, Todon, 311S</li>
+          <li>Du–Ju: 08:00 – 17:00</li>
+        </ul>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <p>© 2025 Bilimdon Bolajon bog'chasi. Barcha huquqlar himoyalangan.</p>
+      <p>Buxoro viloyati, G'ijduvon tumani</p>
+    </div>
+  </div>
+</footer>
+
+<!-- WHATSAPP FLOAT BUTTON -->
+<a href="https://wa.me/998902997578" class="wa-float" target="_blank" title="WhatsApp orqali yozing">💬</a>
+
+<script>
+  // Mobile menu
+  const hamburger = document.getElementById('hamburger');
+  const mobileMenu = document.getElementById('mobileMenu');
+  hamburger.addEventListener('click', () => mobileMenu.classList.toggle('open'));
+  function closeMobile() { mobileMenu.classList.remove('open'); }
+
+  // Form submit
+  function submitForm(e) {
+    e.preventDefault();
+    document.getElementById('contactForm').style.display = 'none';
+    document.getElementById('successMsg').style.display = 'block';
+  }
+
+  // Scroll animations
+  const observer = new IntersectionObserver((entries) => {
+    entries.forEach(el => {
+      if (el.isIntersecting) { el.target.classList.add('visible'); }
+    });
+  }, { threshold: 0.12 });
+  document.querySelectorAll('.fade-up').forEach(el => observer.observe(el));
+</script>
+</body>
+</html>
